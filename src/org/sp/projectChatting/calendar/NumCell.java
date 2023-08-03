@@ -18,18 +18,13 @@ public class NumCell extends Cell{
 				//그럴려면 배열로 담아야 한다. 그럼 여기서아니라 프레임에서
 				//이벤트를 구현해야하는걸까?
 				Object obj = e.getSource();
-				//System.out.println(obj);
-				//for(int i=0; i<42;i++) {
-					//if() {
-						
-					//}
-				//}
+				
 				setBackground(Color.RED);
 				//선택한 셀의 날짜 정보를 하단에 라벨에 기록되어야 한다
 			}
 		});
 	}
-	
+
 	
 
 }

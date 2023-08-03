@@ -14,7 +14,7 @@ public class Cell  extends JPanel{
 	public Cell(Color color) {
 		
 		
-		la_title =  new JLabel("0");
+		la_title =  new JLabel();
 		la_title.setPreferredSize(new Dimension(13,17));
 		la_title.setFont(new Font("dialog", Font.BOLD, 10));
 		
