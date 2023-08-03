@@ -3,15 +3,17 @@ package org.sp.projectChatting.DTO;
 public class EmployeeDTO {
 	private int empno;
 	private String name;
-	private String pass;
+	private String job;
 	private String email;
-	private String phone;
-	private int deptno;
-	private int job_idx;
-	private String hiredate;
+	private String number;
+	private String pass;
+	private String company_name;
+	DeptDTO deptDTO;  //deptDTO 소유해야함
+	StatusDTO statusDTO; //statusDTO 소유해야함
 	
 	
 	
+	//게터 세터
 	public int getEmpno() {
 		return empno;
 	}
@@ -24,11 +26,11 @@ public class EmployeeDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPass() {
-		return pass;
+	public String getJob() {
+		return job;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setJob(String job) {
+		this.job = job;
 	}
 	public String getEmail() {
 		return email;
@@ -36,31 +38,22 @@ public class EmployeeDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhone() {
-		return phone;
+	public String getNumber() {
+		return number;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setNumber(String number) {
+		this.number = number;
 	}
-	public int getDeptno() {
-		return deptno;
+	public String getPass() {
+		return pass;
 	}
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
-	}
-	public int getJob() {
-		return job_idx;
-	}
-	public void setJob(int job_idx) {
-		this.job_idx = job_idx;
-	}
-	public String getHiredate() {
-		return hiredate;
-	}
-	public void setHiredate(String hiredate) {
-		this.hiredate = hiredate;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	
+	
+	
+
 	
 	
 }
