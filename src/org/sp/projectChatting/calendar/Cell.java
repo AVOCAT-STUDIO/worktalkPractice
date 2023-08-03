@@ -2,10 +2,7 @@ package org.sp.projectChatting.calendar;
 
 import java.awt.Color;
 import java.awt.Dimension;
-<<<<<<< HEAD
 import java.awt.Font;
-=======
->>>>>>> refs/remotes/origin/master
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,16 +13,12 @@ public class Cell  extends JPanel{
 	
 	public Cell(Color color) {
 		
-<<<<<<< HEAD
 		
 		la_title =  new JLabel("0");
 		la_title.setPreferredSize(new Dimension(13,17));
 		la_title.setFont(new Font("dialog", Font.BOLD, 10));
 		
 		//setSize(23, 28);
-=======
-		setPreferredSize(new Dimension(width,height));
->>>>>>> refs/remotes/origin/master
 		setBackground(color);
 		
 		add(la_title);

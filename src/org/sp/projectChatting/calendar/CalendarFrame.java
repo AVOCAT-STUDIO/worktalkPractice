@@ -123,30 +123,22 @@ public class CalendarFrame extends JFrame{
 	public void createCell() {
 		//요일셀 반복문으로 만들기
 		for(int i=0; i<dayTitle.length;i++) {
-<<<<<<< HEAD
 			DayCell dayCell = new DayCell(Color.LIGHT_GRAY);
-=======
-			DayCell dayCell = new DayCell(Color.LIGHT_GRAY, 23, 28);
->>>>>>> refs/remotes/origin/master
 			dayCell.setTitle(dayTitle[i]);
 			p_calendar.add(dayCell);
 		}
 		//날짜셀 이중반복문으로 돌리기(7*6)
 		for(int a=0; a<6;a++) {
 			for(int i=0; i<7;i++) {
-<<<<<<< HEAD
+
 				NumCell numCell = new NumCell(Color.WHITE);
-=======
-				NumCell numCell = new NumCell(Color.WHITE, 23, 28);
->>>>>>> refs/remotes/origin/master
 				numCell.setTitle("12");
 				numList.add(numCell);
 				p_calendar.add(numCell);
 			}
 		}
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> refs/remotes/origin/master
+
+
