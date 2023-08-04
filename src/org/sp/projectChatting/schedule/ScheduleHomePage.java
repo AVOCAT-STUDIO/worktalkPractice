@@ -41,7 +41,7 @@ public class ScheduleHomePage extends Page{
 		
 		
 		//디자인과 사이즈조절
-		p_main.setPreferredSize(new Dimension(320,490));
+		p_main.setPreferredSize(new Dimension(300,500));
 		p_north.setPreferredSize(new Dimension(290,50));
 		p_center.setPreferredSize(new Dimension(270,1000));
 		scroll.setPreferredSize(new Dimension(290,420));

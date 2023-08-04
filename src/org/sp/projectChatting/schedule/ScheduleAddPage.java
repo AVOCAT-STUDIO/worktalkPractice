@@ -73,11 +73,7 @@ public class ScheduleAddPage extends Page {
 		la_startTime = new JLabel("09:00");
 		la_endTime = new JLabel("10:00");
 
-		
-		
-		
-		
-		
+	
 		
 		//디자인과 사이즈 
 		Dimension d2 = new Dimension(50,40);
@@ -86,7 +82,7 @@ public class ScheduleAddPage extends Page {
 		Dimension d5 = new Dimension(50,40);
 		Dimension d6 = new Dimension(210,40);
 
-		p_main.setPreferredSize(new Dimension(320,490));
+		p_main.setPreferredSize(new Dimension(300,500));
 		p_north.setPreferredSize(new Dimension(290,50));
 		p_center.setPreferredSize(new Dimension(290,1000));
 		

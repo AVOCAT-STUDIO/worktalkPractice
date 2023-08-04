@@ -2,7 +2,7 @@
 create table dept(
 	deptno number primary key
 	, dname varchar2(20) not null
-) default character set UTF8;
+);
 --부서는 시퀀스 없음
 --부서 데이터 추가
 insert into dept values(11,'임원');
@@ -20,15 +20,15 @@ create table status (
 
 --상태 시퀀스 생성
 create sequence seq_status
-increment by 1,
+increment by 1
 start with 1;
 
 --상태 데이터 추가
-insert into status values (1,'');
-insert into status values (2,'');
-insert into status values (3,'');
-insert into status values (4,'');
-insert into status values (5,'');
+insert into status values (1,'pause.png');
+insert into status values (2,'play.png');
+insert into status values (3,'stop.png');
+insert into status values (4,'meeting.png');
+insert into status values (5,'business.png');
 
 
 --사원 테이블 생성
@@ -41,9 +41,9 @@ create table employee(
 	, pass varchar2(20) not null
 	, deptno number not null
 	, status_idx number not null
-constraint fk_dept_employee foreign key (deptno) references dept(deptno)
-constraint fk_status-employee foreign key (status_idx) references status(status_idx)
-) default character set UTF8;
+,constraint fk_dept_employee foreign key (deptno) references dept(deptno)
+,constraint fk_status_employee foreign key (status_idx) references status(status_idx)
+);
 
 --사원 테이블 시퀀스 생성
 create sequence  seq_empno
@@ -61,10 +61,10 @@ insert into employee values(seq_empno.nextval,'박지현','팀장','pjh230707@so
 insert into employee values(seq_empno.nextval,'송혜령','과장','shr230708@songpawoman.com','08','230708',44,4);
 insert into employee values(seq_empno.nextval,'홍은실','대리','hes230709@songpawoman.com','09','230709',22,4);
 insert into employee values(seq_empno.nextval,'정유진','대리','jyj230710@songpawoman.com','10','230710',33,4);
-insert into employee values(seq_empno.nextval,'??????','대리','???230711@songpawoman.com','11','230711',44,4);
-insert into employee values(seq_empno.nextval,'이지현','대리','ljh230712@songpawoman.com','12','230712',55,4);
+insert into employee values(seq_empno.nextval,'변민희','대리','bmh230711@songpawoman.com','11','230711',44,4);
+insert into employee values(seq_empno.nextval,'윤지현','대리','ljh230712@songpawoman.com','12','230712',55,4);
 insert into employee values(seq_empno.nextval,'김다래','사원','ljh230713@songpawoman.com','13','230713',22,4);
-insert into employee values(seq_empno.nextval,'최수빈','사원','kdr230714@songpawoman.com','14','230714',33,4);
+insert into employee values(seq_empno.nextval,'조수빈','사원','kdr230714@songpawoman.com','14','230714',33,4);
 insert into employee values(seq_empno.nextval,'이수지','사원','lsj230715@songpawoman.com','15','230715',44,4);
 insert into employee values(seq_empno.nextval,'주현영','사원','jhy230716@songpawoman.com','16','230716',55,4);
 insert into employee values(seq_empno.nextval,'김아영','사원','kay230717@songpawoman.com','17','230717',44,4);
@@ -77,16 +77,31 @@ create table schedule (
 	, mm number not null
 	, dd number not null
 	, empno number not null
-constraint fk_employee_schedule foreign key (empno) references employee(empno)
+,constraint fk_employee_schedule foreign key (empno) references employee(empno)
 );
 
 --스케줄 시퀀스 생성
-create sequnce seq_schedule_idx
+create sequence seq_schedule_idx
 increment by 1
-start with 0;
+start with 1;
 --스케줄 데이터 추가 없음 DAO 로만 추가할 예정임
 
 --플랜 테이블 생성
 create table plan (
-	
-) default character set UTF8;
+	plan_idx number primary key
+	, time varchar2(20)
+	, title varchar2(50)
+	, detail clob
+	, filename varchar2(40)
+	, imagename varchar2(40)
+	, schedule_idx number
+	, constraint fk_schedule_plan foreign key (schedule_idx) references schedule(schedule_idx) 
+) ;
+
+
+create sequence seq_plan_idx
+increment by 1
+start with 1;
+
+
+

@@ -11,7 +11,7 @@ public class Page extends JPanel{
 	
 	public Page() {
 		setBackground(new Color(230,242,223));		
-		setPreferredSize(new Dimension(400,530));
+		setPreferredSize(new Dimension(300,500));
 		setVisible(true);
 	  
 	}

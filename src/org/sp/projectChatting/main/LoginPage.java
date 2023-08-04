@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import org.sp.projectChatting.DTO.EmployeeDTO;
-import org.sp.projectChatting.Model.MainDAO;
+import org.sp.projectChatting.Model.EmployeeDAO;
 import org.sp.projectChatting.util.DBManager;
 
 public class LoginPage extends Page {
@@ -40,8 +40,8 @@ public class LoginPage extends Page {
 	//DriverManager보유
 	DBManager dbManager;
 	//DAO, DTO 보유하기
-	MainDAO mainDAO;
-	EmployeeDTO empDTO;
+	EmployeeDAO employeeDAO;
+	EmployeeDTO employeeDTO;
 	
 	
 	
@@ -63,7 +63,7 @@ public class LoginPage extends Page {
 		bt_login = new JButton("Login");
 		la_passChage = new JLabel("비밀번호 변경");
 		dbManager = new DBManager();
-		mainDAO = new MainDAO(dbManager);
+		employeeDAO = new EmployeeDAO(dbManager);
 
 
 		
@@ -75,7 +75,7 @@ public class LoginPage extends Page {
 		Font f2 = new Font("dialog", Font.BOLD, 18);
 		
 		space.setPreferredSize(new Dimension(300,20));
-		p_main.setPreferredSize(new Dimension(300,450));
+		p_main.setPreferredSize(new Dimension(300,500));
 		p_north.setPreferredSize(new Dimension(300,80));
 		p_center.setPreferredSize(new Dimension(300,250));
 		p_south.setPreferredSize(new Dimension(300,80));
@@ -129,7 +129,6 @@ public class LoginPage extends Page {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				loginCheck();
-				//main.showHide(페이지 번호);
 				
 			}
 		});
@@ -137,7 +136,7 @@ public class LoginPage extends Page {
 		la_passChage.addMouseListener(new MouseAdapter() {
 			//라벨을 누르면 비밀번호 변경 페이지로 전환된다
 			public void mouseClicked(MouseEvent e) {
-				main.showHide(1);
+				main.showHide(main.CHANGEPASS);
 			}
 			
 		});
@@ -153,13 +152,13 @@ public class LoginPage extends Page {
 		dto.setEmail(id); //비어있는 dto에 이메일(아디디 대용)대입
 		dto.setPass(password);//비어있는 dto 에 비번대입
 		
-		empDTO = mainDAO.login(dto);
-		if(empDTO==null) {//로그인 실패
+		employeeDTO = employeeDAO.login(dto);
+		if(employeeDTO==null) {//로그인 실패
 			JOptionPane.showMessageDialog(this, "로그인 정보가 올바르지 않습니다");
 		}else {//로그인성공
-			JOptionPane.showMessageDialog(this, (empDTO.getName())+"님 환영합니다.");
+			JOptionPane.showMessageDialog(this, (employeeDTO.getName())+"님 환영합니다.");
 			//채팅홈창 띄우기
-			System.out.println("채팅창 띄우기");
+			main.showHide(main.HOME);
 		}
 		
 		

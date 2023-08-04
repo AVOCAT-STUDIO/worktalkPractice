@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import org.sp.projectChatting.main.Page;
 
-//채팅 가능한 사람들의 목록이 뜨는 가장 기본적인 홈화면
+//그냥 화면 전환 연습을 위해 만들어두 창
 public class ChatHome extends Page {
 	JPanel p_main;
 
@@ -22,7 +22,7 @@ public class ChatHome extends Page {
 		
 		//디자인과 사이즈 조정
 		p_main.setBackground(null); //디자인중에는잠시 막아두기	
-		p_main.setPreferredSize(new Dimension(300,450));
+		p_main.setPreferredSize(new Dimension(300,500));
 
 		add(p_main);
 

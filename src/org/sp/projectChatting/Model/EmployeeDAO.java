@@ -1,19 +1,20 @@
 package org.sp.projectChatting.Model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.sp.projectChatting.DTO.DeptDTO;
 import org.sp.projectChatting.DTO.EmployeeDTO;
+import org.sp.projectChatting.DTO.StatusDTO;
 import org.sp.projectChatting.util.DBManager;
 
 //오직 로그인에 필요한 DAO
-public class MainDAO {
+public class EmployeeDAO {
 	DBManager dbManager;
 	
-	public MainDAO(DBManager dbManager) {
+	public EmployeeDAO(DBManager dbManager) {
 		this.dbManager = dbManager;
 	}
 	
@@ -23,7 +24,9 @@ public class MainDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		EmployeeDTO empdto = null;
+		EmployeeDTO employeeDTO = null;
+		DeptDTO deptDTO = null;
+		StatusDTO statusDTO = null;
 		
 		try {
 			con = dbManager.connect();
@@ -37,16 +40,25 @@ public class MainDAO {
 				pstmt.setString(2, dto.getPass()); //받아온 dto 값을 대입(23072)
 				rs = pstmt.executeQuery();//쿼리 수행후, 결과를 (Resultset)반환받기
 				if(rs.next()) { //rs를 dto 에 옮겨 담자
-					empdto = new EmployeeDTO(); //비어있는 dto 생성해놓기
+					employeeDTO = new EmployeeDTO();//비어있는 dto 생성해놓기
 					//비어있는 dto 에 검색된rs결과물을 채워놓고 밑에서 리터하자
-					empdto.setEmpno(rs.getInt("empno"));
-					empdto.setName(rs.getString("name"));
-					empdto.setPass(rs.getString("pass"));
-					empdto.setEmail(rs.getString("email"));
-					empdto.setPhone(rs.getString("phone"));
-					empdto.setDeptno(rs.getInt("deptno"));
-					empdto.setJob(rs.getInt("job_idx"));
-					empdto.setHiredate(rs.getString("hiredate"));
+					employeeDTO.setEmpno(rs.getInt("empno"));
+					employeeDTO.setName(rs.getString("name"));
+					employeeDTO.setJob(rs.getString("job"));
+					employeeDTO.setPass(rs.getString("pass"));
+					employeeDTO.setEmail(rs.getString("email"));
+					employeeDTO.setPhone(rs.getString("phone"));
+					//질문할것
+					//rs.getInt("deptno");반환형이 int......
+					
+					deptDTO = new DeptDTO(); //비어있는 dto 생성해놓기
+					deptDTO.setDeptno(rs.getInt("deptno"));
+					
+					statusDTO = new StatusDTO();
+					statusDTO.setStatus_idx(rs.getInt("status_idx"));
+					
+					employeeDTO.setDeptDTO(deptDTO);
+					employeeDTO.setStatusDTO(statusDTO);
 				}
 				
 			}
@@ -55,7 +67,7 @@ public class MainDAO {
 		}finally {
 			dbManager.release(con, pstmt, rs);
 		}
-		return empdto;
+		return employeeDTO;
 	}
 	
 }

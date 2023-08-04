@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import org.sp.projectChatting.DTO.EmployeeDTO;
-import org.sp.projectChatting.Model.MainDAO;
+import org.sp.projectChatting.Model.EmployeeDAO;
 import org.sp.projectChatting.util.DBManager;
 
 public class ChangePassPage extends Page {
@@ -79,7 +79,7 @@ public class ChangePassPage extends Page {
 		Font f2 = new Font("dialog", Font.BOLD, 18);
 		
 		space.setPreferredSize(new Dimension(300,20));
-		p_main.setPreferredSize(new Dimension(300,450));
+		p_main.setPreferredSize(new Dimension(300,500));
 		p_north.setPreferredSize(new Dimension(300,80));
 		p_center.setPreferredSize(new Dimension(300,250));
 		p_south.setPreferredSize(new Dimension(300,80));

@@ -1,5 +1,6 @@
 package org.sp.projectChatting.main;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
@@ -11,23 +12,27 @@ public class Main extends JFrame{
 	Page[] pages;
 	public static final int LOGIN = 0;
 	public static final int HOME = 1;
+	public static final int CHANGEPASS = 2;
+	public static final int SCHEDULE = 3;
+	public static final int SCHEDULEADD = 4;
 
 	
 
 	
 	public Main() {
-		pages = new Page[4];
+		pages = new Page[5];
 		pages[0] = new LoginPage(this);
 		pages[1] = new ChangePassPage(this);
-		pages[2] = new ScheduleHomePage(this);
-		pages[3] = new ScheduleAddPage();
+		pages[2] = new HomePage(this);
+		pages[3] = new ScheduleHomePage(this);
+		pages[4] = new ScheduleAddPage();
 		setLayout(new FlowLayout());
 		for(int i=0;i<pages.length;i++) {
 			this.add(pages[i]);
 		
 		}
 		
-		pack();
+		setSize(new Dimension(300,500));
 		setTitle("Worltalk");
 		setLocation(1050,200);
 		setVisible(true);
@@ -37,6 +42,8 @@ public class Main extends JFrame{
 		pages[0].setVisible(true);//디자인 확인용 코드 나중에 삭제 필요
 		pages[1].setVisible(true);//디자인 확인용 코드 나중에 삭제 필요
 		pages[2].setVisible(true);//디자인 확인용 코드 나중에 삭제 필요
+		pages[3].setVisible(true);//디자인 확인용 코드 나중에 삭제 필요
+		pages[4].setVisible(true);//디자인 확인용 코드 나중에 삭제 필요
 		
 	}
 	
@@ -49,7 +56,6 @@ public class Main extends JFrame{
 				pages[i].setVisible(false);			
 			}
 		}
-		pack();
 	}
 	
 	public static void main(String[] args) {

@@ -1,17 +1,17 @@
 package org.sp.projectChatting.DTO;
 
+
+//사원의 정보만을 담는 DTO
 public class EmployeeDTO {
 	private int empno;
 	private String name;
 	private String job;
 	private String email;
-	private String number;
+	private String phone;
 	private String pass;
-	private String company_name;
-	DeptDTO deptDTO;  //deptDTO 소유해야함
-	StatusDTO statusDTO; //statusDTO 소유해야함
-	
-	
+	DeptDTO deptDTO;  //deptDTO 소유해야함 (부서의 모든 정보 접근 가능함)
+	StatusDTO statusDTO; //statusDTO 소유해야함 (상태의 모든 정보 접근 가능함)
+
 	
 	//게터 세터
 	public int getEmpno() {
@@ -38,11 +38,11 @@ public class EmployeeDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNumber() {
-		return number;
+	public String getPhone() {
+		return phone;
 	}
-	public void setNumber(String number) {
-		this.number = number;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getPass() {
 		return pass;
@@ -50,6 +50,22 @@ public class EmployeeDTO {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	public DeptDTO getDeptDTO() {
+		return deptDTO;
+	}
+	public void setDeptDTO(DeptDTO deptDTO) {
+		this.deptDTO = deptDTO;
+	}
+	public StatusDTO getStatusDTO() {
+		return statusDTO;
+	}
+	public void setStatusDTO(StatusDTO statusDTO) {
+		this.statusDTO = statusDTO;
+	}
+	
+	
+	
+	
 	
 	
 	
