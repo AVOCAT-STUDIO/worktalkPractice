@@ -4,7 +4,7 @@ public class DeptDTO {
 	private int deptno;
 	private String dname;
 	
-	//게터 세터
+	
 	public int getDeptno() {
 		return deptno;
 	}
@@ -17,6 +17,9 @@ public class DeptDTO {
 	public void setDname(String dname) {
 		this.dname = dname;
 	}
+	
+
+
 	
 	
 }

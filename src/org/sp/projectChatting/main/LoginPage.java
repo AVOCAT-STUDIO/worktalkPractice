@@ -59,11 +59,11 @@ public class LoginPage extends Page {
 		la_id = new JLabel("ID");
 		la_pass = new JLabel("PW");
 		txt_id = new JTextField("hes230709@songpawoman.com");
-		pass = new JPasswordField("230709");
+		pass = new JPasswordField("1234");
 		bt_login = new JButton("Login");
 		la_passChage = new JLabel("비밀번호 변경");
 		dbManager = new DBManager();
-		employeeDAO = new EmployeeDAO(dbManager);
+		employeeDAO = new EmployeeDAO(dbManager,main);
 
 
 		

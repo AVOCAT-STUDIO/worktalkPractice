@@ -10,6 +10,6 @@ public class ListPanel extends JPanel{
 
 	public ListPanel() {
 		setPreferredSize(new Dimension(260,300));
-		setBackground(Color.BLUE);
+		setBackground(Color.WHITE);
 	}
 }

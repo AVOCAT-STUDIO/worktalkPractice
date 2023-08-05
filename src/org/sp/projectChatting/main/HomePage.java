@@ -17,7 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.sp.projectChatting.DTO.DeptDTO;
 import org.sp.projectChatting.DTO.EmployeeDTO;
+import org.sp.projectChatting.Model.DeptDAO;
 import org.sp.projectChatting.Model.EmployeeDAO;
 import org.sp.projectChatting.util.DBManager;
 
@@ -27,22 +29,19 @@ public class HomePage extends Page{
 	JPanel p_north,p_center,p_south;
 	JTextField txt_search;
 	JPanel p_mine; //나의 정보를 보여주는 패널을 담고있는 패널
+	JPanel p_navi; //네비바들어갈 자리
 	JLabel la_search;//검색버튼이미지
 	JButton bt_status, bt_schedule;
-	
-	String[] naviTitle = {"회계부","영업부","총무부","인사부","마케팅부"};
-	Integer [] deptList = {11,22,33,44,55};
-	
-	int index ;
 	
 	JPanel naviPanel; // 이것도 배열로 가야함. 상위패널 필요함
 	JPanel listPanel;//이건 배열로 가야함 화면 전환때문에 최상위 패널이 필요함
 	Image img_search;
-	//DriverManager보유
-	DBManager dbManager;
-	//DAO, DTO 보유하기
-	EmployeeDAO employeeDAO;
+	
+	DBManager dbManager;//DriverManager보유
+	EmployeeDAO employeeDAO;//DAO, DTO 보유하기
 	EmployeeDTO employeeDTO;
+	DeptDAO deptDAO;
+	DeptDTO deptDTO;
 	
 	
 	
@@ -58,6 +57,7 @@ public class HomePage extends Page{
 		p_north = new JPanel();
 		p_center = new JPanel();
 		p_south = new JPanel();
+		p_navi = new JPanel();
 		
 		txt_search = new JTextField();
 		p_mine = new JPanel();
@@ -68,7 +68,8 @@ public class HomePage extends Page{
 		listPanel = new ListPanel(); //직원들 목록 나오는 영역 
 		
 		dbManager = new DBManager();
-		employeeDAO = new EmployeeDAO(dbManager);
+		employeeDAO = new EmployeeDAO(dbManager, main);
+		deptDAO = new DeptDAO(dbManager);
 		
 		
 		
@@ -80,7 +81,8 @@ public class HomePage extends Page{
 
 		p_main.setPreferredSize(new Dimension(270,470));
 		p_north.setPreferredSize(new Dimension(270,90));
-		p_center.setPreferredSize(new Dimension(270,300));
+		p_navi.setPreferredSize(new Dimension(270,35));
+		p_center.setPreferredSize(new Dimension(270,265));
 		p_south.setPreferredSize(new Dimension(270,40));
 		txt_search.setPreferredSize(new Dimension(210,30));
 		p_mine.setPreferredSize(new Dimension(270,50));
@@ -91,12 +93,11 @@ public class HomePage extends Page{
 		
 		p_main.setBackground(new Color(230,242,223));
 		p_north.setBackground(Color.WHITE);
+		p_navi.setBackground(Color.WHITE);
 		p_center.setBackground(Color.WHITE);
 		p_south.setBackground(Color.WHITE);
 		
-		//createMyPanel();
-		createNaviPanel();
-		//createListPanel();
+
 		createIcon();
 		
 		//붙이기
@@ -111,6 +112,7 @@ public class HomePage extends Page{
 		p_south.add(bt_schedule);
 		
 		p_main.add(p_north);
+		p_main.add(p_navi);
 		p_main.add(p_center);
 		p_main.add(p_south);
 		
@@ -134,11 +136,12 @@ public class HomePage extends Page{
 		la_search.addMouseListener(new MouseAdapter() {
 			//마우스로 클릭하면 검색이 가능한 기능
 			public void mouseClicked(MouseEvent e) {
-				//아직 무슨 기능인지 잘 모르겠음 ㅋㅋㅋㅋㅋㅋ
+				//일단 디자인만 구현 시간관계상 패스
 			}
 		});
 		
 		createEmpList(33); //33번 부서 디폴트값으로 정함 
+		createNaviPanel();
 	}
 
 	
@@ -150,10 +153,7 @@ public class HomePage extends Page{
 			la_search = new JLabel(new ImageIcon(image));
 			//그외 아이콘들 추가로 만들면 됨
 			
-			
-			
-			
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +178,6 @@ public class HomePage extends Page{
 	}
 	
 	public void createMyPanel(){
-		
 		EmpPanel empPanel = new EmpPanel(main.employeeDTO);
 		p_mine.add(empPanel);
 		
@@ -187,19 +186,15 @@ public class HomePage extends Page{
 	
 	
 	public void createNaviPanel() {
-		for(int i=0; i<naviTitle.length;i++) {	
-			naviPanel = new NaviPanel(this,naviTitle[i]);
-			p_center.add(naviPanel);
+		List<DeptDTO> deptList = deptDAO.selectAllDept();
+		
+		for(int i=0; i<deptList.size();i++) {	
+			DeptDTO dept = deptList.get(i);
+			naviPanel = new NaviPanel(this, dept);
 
-
+			p_navi.add(naviPanel);
 		}
 		
 	}
-	public void createListPanel() {
-		for(int i=0; i<naviTitle.length;i++) {	
-			listPanel = new ListPanel();
-			p_center.add(listPanel);
-			
-		}
-	}
+
 }

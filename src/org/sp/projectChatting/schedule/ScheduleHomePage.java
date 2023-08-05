@@ -41,11 +41,11 @@ public class ScheduleHomePage extends Page{
 		
 		
 		//디자인과 사이즈조절
-		p_main.setPreferredSize(new Dimension(300,500));
-		p_north.setPreferredSize(new Dimension(290,50));
-		p_center.setPreferredSize(new Dimension(270,1000));
-		scroll.setPreferredSize(new Dimension(290,420));
-		la_name.setPreferredSize(new Dimension(220,40));
+		p_main.setPreferredSize(new Dimension(270,450));
+		p_north.setPreferredSize(new Dimension(250,50));
+		p_center.setPreferredSize(new Dimension(250,1000));
+		scroll.setPreferredSize(new Dimension(250,370));
+		la_name.setPreferredSize(new Dimension(210,40));
 		bt_add.setPreferredSize(new Dimension(30,30));
 		
 		
@@ -85,5 +85,8 @@ public class ScheduleHomePage extends Page{
 	}
 	
 
+	public void showUser() {
+		//la_name.setText(main.employeeDTO.get);
+	}
 	
 }

@@ -38,13 +38,13 @@ public class PlanPanel extends JPanel{
 		
 		
 		//디자인
-		p_date.setPreferredSize( new Dimension(260,30));
-		p_detail.setPreferredSize( new Dimension(260,80));
+		p_date.setPreferredSize( new Dimension(240,30));
+		p_detail.setPreferredSize( new Dimension(240,80));
 		p_date.setBackground(null);
 		//p_detail.setBackground(Color.BLUE);
 		scroll.setBackground(null);
 		
-		scroll.setPreferredSize(new Dimension(245,70));
+		scroll.setPreferredSize(new Dimension(220,70));
 		
 		la_date.setPreferredSize(new Dimension(260,20));
 		la_date.setFont(new Font("dialog", Font.BOLD, 15));

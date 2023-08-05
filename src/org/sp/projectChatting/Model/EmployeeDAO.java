@@ -10,14 +10,17 @@ import java.util.List;
 import org.sp.projectChatting.DTO.DeptDTO;
 import org.sp.projectChatting.DTO.EmployeeDTO;
 import org.sp.projectChatting.DTO.StatusDTO;
+import org.sp.projectChatting.main.Main;
 import org.sp.projectChatting.util.DBManager;
 
 //오직 로그인에 필요한 DAO
 public class EmployeeDAO {
 	DBManager dbManager;
+	Main main;
 	
-	public EmployeeDAO(DBManager dbManager) {
+	public EmployeeDAO(DBManager dbManager,Main main) {
 		this.dbManager = dbManager;
+		this.main = main;
 	}
 	
 	
@@ -117,20 +120,34 @@ public class EmployeeDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			
+			dbManager.release(con, pstmt, rs);
 		}
 		return empList;
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
+	
+	
+	public void passChange(EmployeeDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		con = dbManager.connect();
+		String sql = "update employee set pass=? where email = ? and pass = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			//pstmt.setString(1, dto.getEmail()); //메일주소
+			//pstmt.setString(2, dto.getPass()); //기존 비밀번호
+			
+			//pstmt.setString(3, main. 페스체인지 페이지에 있는 .getText(t_newPass);
+			//pstmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			dbManager.release(con, pstmt);
+		}
+		
+	}
 	
 }

@@ -2,36 +2,46 @@ package org.sp.projectChatting.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import org.sp.projectChatting.DTO.DeptDTO;
 
 //부서이름을 가지고 있는 네이바패널 클릭하면 하단의 리스트 배널이 변환된다
 public class NaviPanel extends JPanel{
 	JLabel la_title;
 	HomePage homePage;
-	Integer [] deptList = {11,22,33,44,55};
+	DeptDTO deptDTO;
 	
-	public NaviPanel( HomePage homePage, String title) {
+	public NaviPanel( HomePage homePage, DeptDTO deptDTO) {
 		this.homePage = homePage; 
+		this.deptDTO = deptDTO;
 		la_title = new JLabel();
-		la_title.setText(title);
+		la_title.setText(deptDTO.getDname());
 
 		add(la_title);
 		setPreferredSize(new Dimension(48,30));
-		setBackground(null);
+		setBackground(Color.WHITE);
 		
 
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				Object obj = e.getSource();
+				//Object obj = e.getSource();
 				homePage.listPanel.removeAll();
-				homePage.createEmpList(deptList[0]);
+				
+				//여기도 에러 널포인트..deptDTO 값이 없음..왜지?
+				
+				homePage.createEmpList(homePage.deptDTO.getDeptno());
 
+			}
+			public void mouseEntered(MouseEvent e) {
+				setBackground(new Color(230,242,223));
+			}
+			public void mouseExited(MouseEvent e) {
+				setBackground(Color.WHITE);
 			}
 		});
 	}

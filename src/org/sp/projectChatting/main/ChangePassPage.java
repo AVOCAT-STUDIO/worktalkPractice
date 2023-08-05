@@ -146,11 +146,20 @@ public class ChangePassPage extends Page {
 
 	public void changePass() {
 		//dao로 비밀번호 교체하고  성공과 실패 여부에 따라 팝업창을 띄우고 화면 전환필요
-		String id;
-		String password;
-		String newPassword;
+		String id =t_id.getText();
+		char[] password = t_pass.getPassword();
+		char[] newPassword = t_pass.getPassword();
+		char[] passCheck = t_pass.getPassword();
 		
-		EmployeeDTO dto = new EmployeeDTO(); //비어있는 DTO 준비
+		if(newPassword !=passCheck) {
+			JOptionPane.showMessageDialog(this, "비밀번호가 다름니다");
+		}else {
+			EmployeeDTO dto = new EmployeeDTO(); //비어있는 DTO 준비
+			dto.setEmail(id);
+			//dto.setPass((String)password);
+			
+		}
+		
 		//비어있는 dto 에 입력한값 세팅하기
 		//dto.set
 		
