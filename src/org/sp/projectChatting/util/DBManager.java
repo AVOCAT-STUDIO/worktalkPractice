@@ -9,7 +9,7 @@ import java.sql.SQLException;
 //프로그램 작동시 DB 의 접속과 해제를 담당하는 객체
 public class DBManager {
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "boss";
+	String user = "songpa";
 	String password = "1234";
 	
 	//db 연결하기

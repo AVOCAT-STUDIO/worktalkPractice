@@ -2,9 +2,15 @@ package org.sp.projectChatting.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import org.sp.projectChatting.DTO.EmployeeDTO;
 
 //패널하나에 오롯이 한 직원의 정보만 포함한다
 //클릭하면 직원의 상세 페이지로 전환된다.
@@ -15,8 +21,11 @@ public class EmpPanel extends JPanel{
 	JLabel la_job;//직급이 적힐 라벨
 	JLabel la_name;//이름이 적힐 라벨
 	JPanel icon; //상태 아이콘이 보여질 라벨
+	EmployeeDTO employeeDTO;
 	
-	public EmpPanel() {
+	public EmpPanel(EmployeeDTO employeeDTO) {
+		this.employeeDTO=employeeDTO;
+		
 		photo = new JPanel();
 		la_dname = new JLabel();
 		la_job = new JLabel();
@@ -33,10 +42,9 @@ public class EmpPanel extends JPanel{
 		p_job.setPreferredSize(new Dimension(55,30));
 		p_name.setPreferredSize(new Dimension(55,30));
 		
-		la_dname.setText("영업부");
-		la_job.setText("팀장");
-		la_name.setText("이수지");
-		
+		la_dname.setText(employeeDTO.getDeptDTO().getDname());
+		la_job.setText(employeeDTO.getJob());
+		la_name.setText(employeeDTO.getName());
 		
 
 		p_dname.add(la_dname);
@@ -49,9 +57,22 @@ public class EmpPanel extends JPanel{
 		add(p_name);
 		add(icon);
 		
-		setPreferredSize(new Dimension(270,40));
-		setBackground(Color.YELLOW);
+		setPreferredSize(new Dimension(250,40));
+		setBackground(Color.WHITE);
 		
 		
+		addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				//페이지 전환 (혜령이가 만든 상세 페이지 넣어야함)
+				//다른 곳으로 가야할까??
+			}
+		});
+		
+	}
+	
+	public void setTitle(String dname, String job, String name) {
+		la_dname.setText(dname);
+		la_job.setText(job);
+		la_name.setText(name);
 	}
 }

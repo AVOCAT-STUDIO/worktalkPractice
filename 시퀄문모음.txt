@@ -1,3 +1,22 @@
+--테이블 스페이스 생성
+
+create  tablespace  songpa
+datafile 'C:\oraclexe\app\oracle\oradata\XE/songpa.dbf'  size 5M; 
+--유저생성과권한주기
+
+create  user  songpa
+identified by 1234
+default  tablespace songpa
+quota  unlimited  on songpa;
+
+grant create  table , create sequence , create session to songpa;
+
+
+ 
+------------------------------------------------
+--유저변경후 테이블 생성요망
+
+
 --부서 테이블 생성
 create table dept(
 	deptno number primary key
@@ -5,7 +24,7 @@ create table dept(
 );
 --부서는 시퀀스 없음
 --부서 데이터 추가
-insert into dept values(11,'임원');
+insert into dept values(11,'인사부');
 insert into dept values(22,'영업부');
 insert into dept values(33,'마케팅부');
 insert into dept values(44,'회계부');
@@ -27,8 +46,8 @@ start with 1;
 insert into status values (1,'pause.png');
 insert into status values (2,'play.png');
 insert into status values (3,'stop.png');
-insert into status values (4,'meeting.png');
-insert into status values (5,'business.png');
+insert into status values (4,'business.png');
+
 
 
 --사원 테이블 생성
@@ -51,7 +70,7 @@ increment by 1
 start with 23071;
 
 --사원 테이블 데이터 추가
-insert into employee values(seq_empno.nextval,'황경미','사장','hkm230701@songpawoman.com','01','230701',11,4);
+insert into employee values(seq_empno.nextval,'황경미','대표','hkm230701@songpawoman.com','01','230701',11,4);
 insert into employee values(seq_empno.nextval,'민진호','부장','mjh230702@songpawoman.com','02','230702',22,4);
 insert into employee values(seq_empno.nextval,'손정혜','부장','sjh230703@songpawoman.com','03','230703',33,4);
 insert into employee values(seq_empno.nextval,'박지인','부장','pji230704@songpawoman.com','04','230704',44,4);

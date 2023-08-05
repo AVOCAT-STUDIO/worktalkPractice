@@ -78,12 +78,12 @@ public class ChangePassPage extends Page {
 		Font f1 = new Font("dialog", Font.BOLD, 30);
 		Font f2 = new Font("dialog", Font.BOLD, 18);
 		
-		space.setPreferredSize(new Dimension(300,20));
-		p_main.setPreferredSize(new Dimension(300,500));
-		p_north.setPreferredSize(new Dimension(300,80));
-		p_center.setPreferredSize(new Dimension(300,250));
-		p_south.setPreferredSize(new Dimension(300,80));
-		space2.setPreferredSize(new Dimension(300,40));
+		space.setPreferredSize(new Dimension(270,20));
+		p_main.setPreferredSize(new Dimension(270,470));
+		p_north.setPreferredSize(new Dimension(270,80));
+		p_center.setPreferredSize(new Dimension(270,350));
+		p_south.setPreferredSize(new Dimension(270,80));
+		space2.setPreferredSize(new Dimension(270,40));
 
 		la_id.setPreferredSize(d1);
 		la_pass.setPreferredSize(d1);

@@ -32,7 +32,7 @@ public class StatusChangeFrame extends JFrame{
 	
 	public void createImages() {
 		//for() {
-			//이미지 다섯개 별열로된거 끌고와야함
+			//이미지 4개 별열로된거 끌고와야함
 		//}
 	}
 	public void createRButton() {

@@ -35,8 +35,8 @@ public class LoginPage extends Page {
 	JPasswordField pass;
 	JButton bt_login;
 	JLabel la_passChage;
-	Main main;
 	
+	Main main;
 	//DriverManager보유
 	DBManager dbManager;
 	//DAO, DTO 보유하기
@@ -58,8 +58,8 @@ public class LoginPage extends Page {
 		la_comname = new JLabel("           송파여성인력개발센터"); //가운데 정렬몰라서 공간으로 일단 꼼수
 		la_id = new JLabel("ID");
 		la_pass = new JLabel("PW");
-		txt_id = new JTextField();
-		pass = new JPasswordField();
+		txt_id = new JTextField("hes230709@songpawoman.com");
+		pass = new JPasswordField("230709");
 		bt_login = new JButton("Login");
 		la_passChage = new JLabel("비밀번호 변경");
 		dbManager = new DBManager();
@@ -74,12 +74,12 @@ public class LoginPage extends Page {
 		Font f1 = new Font("dialog", Font.BOLD, 30);
 		Font f2 = new Font("dialog", Font.BOLD, 18);
 		
-		space.setPreferredSize(new Dimension(300,20));
-		p_main.setPreferredSize(new Dimension(300,500));
-		p_north.setPreferredSize(new Dimension(300,80));
-		p_center.setPreferredSize(new Dimension(300,250));
-		p_south.setPreferredSize(new Dimension(300,80));
-		la_comname.setPreferredSize(new Dimension(300,40));
+		space.setPreferredSize(new Dimension(270,20));
+		p_main.setPreferredSize(new Dimension(270,350));
+		p_north.setPreferredSize(new Dimension(270,80));
+		p_center.setPreferredSize(new Dimension(270,230));
+		p_south.setPreferredSize(new Dimension(270,80));
+		la_comname.setPreferredSize(new Dimension(270,40));
 		la_id.setPreferredSize(d1);
 		la_pass.setPreferredSize(d1);
 		txt_id.setPreferredSize(d2);
@@ -159,9 +159,15 @@ public class LoginPage extends Page {
 			JOptionPane.showMessageDialog(this, (employeeDTO.getName())+"님 환영합니다.");
 			//채팅홈창 띄우기
 			main.showHide(main.HOME);
+			main.employeeDTO=employeeDTO;
+			HomePage homePage = (HomePage)main.pages[2];
+			//홈화면에 내 정보 뿌리기
+			homePage.createMyPanel();
+			
+			
+			
+
 		}
-		
-		
-		
 	}
+
 }

@@ -5,17 +5,18 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 
+import org.sp.projectChatting.DTO.EmployeeDTO;
 import org.sp.projectChatting.schedule.ScheduleAddPage;
 import org.sp.projectChatting.schedule.ScheduleHomePage;
 
 public class Main extends JFrame{
 	Page[] pages;
 	public static final int LOGIN = 0;
-	public static final int HOME = 1;
-	public static final int CHANGEPASS = 2;
+	public static final int CHANGEPASS = 1;
+	public static final int HOME = 2;
 	public static final int SCHEDULE = 3;
 	public static final int SCHEDULEADD = 4;
-
+	EmployeeDTO employeeDTO; //처음에는 널이지만 로그인 후에는 계속 접속한 한명의  유저의 정보만 담고있다
 	
 
 	
@@ -26,11 +27,14 @@ public class Main extends JFrame{
 		pages[2] = new HomePage(this);
 		pages[3] = new ScheduleHomePage(this);
 		pages[4] = new ScheduleAddPage();
+
 		setLayout(new FlowLayout());
 		for(int i=0;i<pages.length;i++) {
 			this.add(pages[i]);
 		
 		}
+		
+		
 		
 		setSize(new Dimension(300,500));
 		setTitle("Worltalk");
@@ -57,6 +61,7 @@ public class Main extends JFrame{
 			}
 		}
 	}
+
 	
 	public static void main(String[] args) {
 		new Main();

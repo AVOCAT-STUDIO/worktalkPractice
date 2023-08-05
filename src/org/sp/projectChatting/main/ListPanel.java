@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class ListPanel extends JPanel{
 
 	public ListPanel() {
-		setPreferredSize(new Dimension(280,305));
+		setPreferredSize(new Dimension(260,300));
 		setBackground(Color.BLUE);
 	}
 }
